@@ -1,3 +1,4 @@
 /dist
 /node_modules
+/MyProject/node_modules
 /.vscode
