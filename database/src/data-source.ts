@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "mssql",
@@ -7,14 +8,15 @@ export const AppDataSource = new DataSource({
   username: "sa",
   password: "6894100",
   database: "Shopify-local",
-  synchronize: true,
+  synchronize: false,
   logging: false,
-  //   entities: [User],
+  entities: [User],
   migrations: [],
   subscribers: [],
-  migrationsTableName: "custom_migration_table",
   options: {
     trustServerCertificate: true,
     instanceName: "SQLSERVER2022",
   },
 });
+
+export const userDataSource = AppDataSource.getRepository(User);
