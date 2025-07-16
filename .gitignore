@@ -1,4 +1,6 @@
 /dist
 /node_modules
-/MyProject/node_modules
+/database/node_modules
 /.vscode
+
+/src/generated/prisma
