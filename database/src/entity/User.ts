@@ -28,6 +28,9 @@ export class User {
   mobile!: string;
 
   @Column({ nullable: true })
+  passwordCodeVerification!: number;
+
+  @Column({ nullable: true })
   birthDate!: Date;
 
   @CreateDateColumn()
