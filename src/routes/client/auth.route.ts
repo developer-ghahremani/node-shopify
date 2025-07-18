@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import { Router } from "express";
-import { sign as jwtSign } from "jsonwebtoken";
+import { NextFunction, Request, Response, Router } from "express";
+import { sign as jwtSign, verify as jwtVerify } from "jsonwebtoken";
 import moment from "moment";
 import z from "zod";
 import { userDataSource } from "../../../database/src/data-source";
@@ -105,6 +105,28 @@ clientAuthRoute.post(
     } catch (error) {
       res.status(400).send(error);
     }
+  }
+);
+
+clientAuthRoute.post(
+  "/edit-profile",
+  (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { authorization } = req.headers;
+      if (!authorization) throw new Error("Token not sent");
+      const user = jwtVerify(authorization, process.env.PRIVATE_KEY || "") as {
+        user: { id: number };
+      };
+      console.log(user);
+      // req.user = user.user;
+
+      next();
+    } catch (error) {
+      res.status(400).send({ error });
+    }
+  },
+  (req, res, next) => {
+    res.send({ message: "Everything is Ok sweat heart." });
   }
 );
 

@@ -4,6 +4,7 @@ import express from "express";
 import { mainMiddleware } from "./middleware/main.middleware";
 import routes from "./routes";
 import { AppDataSource } from "../database/src/data-source";
+import { errorMiddleware } from "./middleware/error.middleware";
 
 const app = express();
 const port = process.env.PORT;
@@ -11,6 +12,7 @@ const port = process.env.PORT;
 app.use(bodyParse.json());
 app.use(mainMiddleware);
 app.use("/api/v1", routes);
+app.use(errorMiddleware);
 
 AppDataSource.initialize().then(
   () => {
