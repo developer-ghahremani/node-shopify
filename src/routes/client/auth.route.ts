@@ -3,7 +3,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { sign as jwtSign, verify as jwtVerify } from "jsonwebtoken";
 import moment from "moment";
 import z from "zod";
-import { userDataSource } from "../../../database/src/data-source";
+import { userDataSource } from "./../../database/src/data-source";
 import { validateInputData } from "../../middleware/validation.middleware";
 import { transporter } from "../../utils/email.util";
 

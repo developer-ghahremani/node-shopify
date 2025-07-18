@@ -3,7 +3,7 @@ import bodyParse from "body-parser";
 import express from "express";
 import { mainMiddleware } from "./middleware/main.middleware";
 import routes from "./routes";
-import { AppDataSource } from "../database/src/data-source";
+import { AppDataSource } from "./database/src/data-source";
 import { errorMiddleware } from "./middleware/error.middleware";
 
 const app = express();
