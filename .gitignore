@@ -2,6 +2,6 @@
 /node_modules
 /database/node_modules
 /.vscode
-.env
+/.env
 
 /src/generated/prisma
